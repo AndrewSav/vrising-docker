@@ -1,0 +1,20 @@
+services:
+  vrising:
+    image: andrewsav/vrising
+    container_name: vrising
+    restart: unless-stopped
+    network_mode: bridge
+    environment:
+      VR_SERVER_NAME: V Rising Dedicated Server
+      VR_GAME_PORT: "27017"
+      VR_QUERY_PORT: "27018"
+      VR_LIST_ON_STEAM: "true"
+      VR_LIST_ON_EOS: "true"
+      #ENABLE_MODS: 1
+    volumes:
+      - './server:/mnt/vrising/server'
+      - './data:/mnt/vrising/persistentdata'
+      - './mods:/mnt/vrising/mods'
+    ports:
+      - '27017:27017/udp'
+      - '27018:27018/udp'
