@@ -3,6 +3,7 @@ services:
     image: andrewsav/vrising
     container_name: vrising
     restart: unless-stopped
+    init: true
     network_mode: bridge
     environment:
       TZ: Pacific/Auckland

@@ -79,6 +79,7 @@ Of course this workflow is just a suggestion, you can use any method of managing
 ```bash
 docker run -d --name='vrising' \
 --net='bridge' \
+--init \
 --restart=unless-stopped \
 -e SERVERNAME="My V Rising Server" \
 -v '/path/on/host/server':'/mnt/vrising/server' \
