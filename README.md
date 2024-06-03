@@ -70,7 +70,7 @@ Here `vrising-server.r2z` is the file you exported on a previous step and `./mod
 
 - **Important:** In `mods/BepInEx/config/BepInEx.cfg`, under `[Logging.Console]` change `Enabled` to `false`
 - Set the `ENABLE_MODS` environment variable and start your docker container. If you are using docker compose I suggest running `docker compose up -d --force-recreate` to restart it.
-- Once the server is up and running with mods, most of the mods will create configuration files under the Steam install path in `BepInEx/config` directory. You will want to copy all those files over to your mods directory, since they will be lost on then server restart otherwise. Make the desired changes, if any, in those copied configs, and restart the container again
+- Once the server is up and running with mods (I noticed it takes considerably more time to start with mods enabled), most of the mods will create configuration files under the Steam install path in `BepInEx/config` directory. You will want to copy all those files over to your mods directory, since they will be lost on then server restart otherwise. Make the desired changes, if any, in those copied configs, and restart the container again
 
 Of course this workflow is just a suggestion, you can use any method of managing mods you want
 
@@ -111,7 +111,7 @@ The mod support hopefully will be added to TureOsiris image, and at that stage t
 - Uses winehq for wine, version 9 as for the time of writing. The original one uses version 7, however, there is a winehq label on the original docker repo
 - Docker logs and V Rising sever logs are not mixed up interleaved in the docker log. V Rising server logs are in a separate file. Incidentally I also removed old logs clean up on start up, because, IMO if it's done it should be done on schedule and not by the container itself
 - I removed all the custom environment variables because they duplicate the ones providing by V Rising server itself and thus are redundant
-- I removed "graceful termination",  most likely it was there for a good reason, but I could not make sense of that code. I do not see any problems stopping the container, since `docker stop` uses SIGTERM and it seems to work fine for me. I'm happy to revisit this if I encounter or can reproduce problems other people reported with that
+- I removed "graceful termination",  because I believe that's something that should be handled properly by the docker itself. I added `exec` to invoke wine to make it top level process and added `init` for signals propagation / reaping. I believe this should be sufficient for graceful termination, while being simpler
 
 ## Credits
 
