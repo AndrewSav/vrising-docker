@@ -16,7 +16,7 @@ RUN useradd -m steam && cd /home/steam && \
     wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources && \
     apt-get update -y && \
     apt-get install -y --install-recommends winehq-stable && \
-    apt-get install -y gdebi-core libgl1-mesa-glx:i386 steam steamcmd winbind winetricks xvfb && \
+    apt-get install -y gdebi-core libgl1-mesa-glx:i386 steam steamcmd winbind winetricks xvfb tzdata && \
     apt-get remove -y --purge wget software-properties-common && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \

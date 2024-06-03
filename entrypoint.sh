@@ -57,4 +57,4 @@ Xvfb :0 -screen 0 1024x768x16 &
 
 echo "[entrypoint] Launching wine64 V Rising"
 
-DISPLAY=:0.0 wine64 /mnt/vrising/server/VRisingServer.exe -persistentDataPath $p -logFile "$p/$(date +%Y%m%d-%H%M)-VRisingServer.log" 2>&1
+exec env DISPLAY=:0.0 wine64 /mnt/vrising/server/VRisingServer.exe -persistentDataPath $p -logFile "$p/$(date +%Y%m%d-%H%M)-VRisingServer.log" 2>&1
