@@ -68,6 +68,7 @@ r2modman-headless --install-dir=./mods \
 
 Here `vrising-server.r2z` is the file you exported on a previous step and `./mods` is the path to the docker volume mapped mods directory.
 
+- **Important:** In `mods/BepInEx/config/BepInEx.cfg`, under `[Logging.Console]` change `Enabled` to `false`
 - Set the `ENABLE_MODS` environment variable and start your docker container. If you are using docker compose I suggest running `docker compose up -d --force-recreate` to restart it.
 - Once the server is up and running with mods, most of the mods will create configuration files under the Steam install path in `BepInEx/config` directory. You will want to copy all those files over to your mods directory, since they will be lost on then server restart otherwise. Make the desired changes, if any, in those copied configs, and restart the container again
 

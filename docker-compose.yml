@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     network_mode: bridge
     environment:
+      TZ: Pacific/Auckland
       VR_SERVER_NAME: V Rising Dedicated Server
       VR_GAME_PORT: "27017"
       VR_QUERY_PORT: "27018"

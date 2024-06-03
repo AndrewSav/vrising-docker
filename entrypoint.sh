@@ -29,10 +29,10 @@ if [ ! -f "$p/Settings/ServerHostSettings.json" ]; then
 fi
 
 echo "[entrypoint] Cleaning  up old mods (if any).."
-rm -rf BepInEx
-rm -rf dotnet
-rm -f doorstop_config.ini
-rm -f winhttp.dll
+rm -rf "$s/BepInEx"
+rm -rf "$s/dotnet"
+rm -f "$s/doorstop_config.ini"
+rm -f "$s/winhttp.dll"
 
 if [ -n "$ENABLE_MODS" ]; then
   echo "[entrypoint] Setting up mods..."
