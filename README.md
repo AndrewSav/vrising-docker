@@ -1,5 +1,8 @@
 # Dockerized V Rising dedicated server in an Ubuntu 22.04 container with Wine
 
+[![GitHub Actions](https://github.com/AndrewSav/vrising-docker/actions/workflows/main.yml/badge.svg)](https://github.com/AndrewSav/vrising-docker/actions)
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/andrewsav/vrising?sort=semver)](https://hub.docker.com/r/andrewsav/vrising/tags)
+
 I strongly suggest to start with [official V Rising dedicate server instructions](https://github.com/StunlockStudios/vrising-dedicated-server-instructions), they list and explain the server settings, their different source and precedence, I will assume you are already familiar with these below. The environment variables mentioned there you can directly use with this docker container.
 
 ## Environment variables
