@@ -43,6 +43,9 @@ When the container starts for the first time it will copy the default server set
 
 ## Mods support
 
+> [!NOTE]  
+> As of the time of writing (03 May 2025) the mods for V Rising in general (not just for this docker image) are broken by the game 1.1 Oakveil release. The community is working on making nescessary changes to make the modding framework working with the update. You can follow [V Rising Mod Discord](https://discord.com/invite/QG2FmueAG9) for the updates.
+
 When the container starts, first, before starting the server, the container removes old mods from the Steam install path, and then, if `ENABLE_MODS` environment variable is enabled, it copies the mods from the Mods volume. The following files and directories are removed and then copied. Those files and directories are expected to appear in the mods volume if `ENABLE_MODS` is set.
 
 - BepInEx (directory)
