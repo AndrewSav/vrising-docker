@@ -44,7 +44,7 @@ When the container starts for the first time it will copy the default server set
 ## Mods support
 
 > [!NOTE]  
-> As of the time of writing (03 May 2025) the mods for V Rising in general (not just for this docker image) are broken by the game 1.1 Oakveil release. The community is working on making nescessary changes to make the modding framework working with the update. You can follow [V Rising Mod Discord](https://discord.com/invite/QG2FmueAG9) for the updates.
+> As of the time of writing (19 May 2025) the mods for V Rising in general (not just for this docker image) are in beta for the game 1.1 Oakveil release. I've tested a few mods with the beta BepInEx release, and it worked fine. The community is working on making necessary changes to make the modding framework working with the update. You can follow [V Rising Mod Discord](https://discord.com/invite/QG2FmueAG9) for the updates.
 
 When the container starts, first, before starting the server, the container removes old mods from the Steam install path, and then, if `ENABLE_MODS` environment variable is enabled, it copies the mods from the Mods volume. The following files and directories are removed and then copied. Those files and directories are expected to appear in the mods volume if `ENABLE_MODS` is set.
 
@@ -64,7 +64,7 @@ One suggested workflow for getting the mods running is the following:
 
 ```bash
 r2modman-headless --install-dir=./mods \
-  --profile-zip ~/vrising-server.r2z \
+  --profile-zip vrising-server.r2z \
   --thunderstore-metadata-url=https://thunderstore.io/c/v-rising/api/v1/package/ \
   --work-dir /tmp
 ```
@@ -73,7 +73,7 @@ Here `vrising-server.r2z` is the file you exported on a previous step and `./mod
 
 - **Important:** In `mods/BepInEx/config/BepInEx.cfg`, under `[Logging.Console]` change `Enabled` to `false`
 - Set the `ENABLE_MODS` environment variable and start your docker container. If you are using docker compose I suggest running `docker compose up -d --force-recreate` to restart it.
-- Once the server is up and running with mods (I noticed it takes considerably more time to start with mods enabled), most of the mods will create configuration files under the Steam install path in `BepInEx/config` directory. You will want to copy all those files over to your mods directory, since they will be lost on then server restart otherwise. Make the desired changes, if any, in those copied configs, and restart the container again
+- Once the server is up and running with mods (I noticed it takes considerably more time to start with mods enabled, in vicinity of 5 more minutes), most of the mods will create configuration files under the Steam install path in `BepInEx/config` directory. You will want to copy all those files over to your mods directory, since they will be lost on then server restart otherwise. Make the desired changes, if any, in those copied configs, and restart the container again
 
 Of course this workflow is just a suggestion, you can use any method of managing mods you want
 
