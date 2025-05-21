@@ -11,6 +11,7 @@ I strongly suggest to start with [official V Rising dedicate server instructions
 | Variable    | Description                                                  |
 | ----------- | ------------------------------------------------------------ |
 | ENABLE_MODS | if provided, mods will be enabled for the server (see below about the mods support) |
+| SKIP_UPDATE | if provided, skips the Steam update process on container startup |
 
 ## Ports
 

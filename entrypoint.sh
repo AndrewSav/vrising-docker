@@ -6,14 +6,18 @@ m=/mnt/vrising/mods
 
 mkdir -p /root/.steam 2>&1
 
-echo "[entrypoint] Updating V-Rising Dedicated Server files with steamcmd..."
-if ! (r=5; while ! /usr/bin/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "$s" +login anonymous +app_update 1829350 validate +quit ; do
-          ((--r)) || exit
-          echo "[entrypoint] something went wrong, let's wait 5 seconds and retry"
-          sleep 5
-      done) ; then
-    echo "[entrypoint] failed updating with steamcmd!"
-    exit 1
+if [ -z "$SKIP_UPDATE" ]; then
+    echo "[entrypoint] Updating V-Rising Dedicated Server files with steamcmd..."
+    if ! (r=5; while ! /usr/bin/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "$s" +login anonymous +app_update 1829350 validate +quit ; do
+              ((--r)) || exit
+              echo "[entrypoint] something went wrong, let's wait 5 seconds and retry"
+              sleep 5
+          done) ; then
+        echo "[entrypoint] failed updating with steamcmd!"
+        exit 1
+    fi
+else
+    echo "[entrypoint] Skipping update as SKIP_UPDATE is set"
 fi
 
 if ! grep -q -o 'avx[^ ]*' /proc/cpuinfo; then

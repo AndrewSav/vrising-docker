@@ -17,6 +17,7 @@ services:
       #VR_PRESET: StandardPvE
       #VR_DIFFICULTY_PRESET: Difficulty_Normal
       #ENABLE_MODS: 1
+      #SKIP_UPDATE: 1
     volumes:
       - './server:/mnt/vrising/server'
       - './data:/mnt/vrising/persistentdata'
