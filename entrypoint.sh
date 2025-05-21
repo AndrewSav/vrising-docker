@@ -6,7 +6,10 @@ m=/mnt/vrising/mods
 
 mkdir -p /root/.steam 2>&1
 
-if [ -z "$SKIP_UPDATE" ]; then
+if [ -z "$SKIP_UPDATE" ] || [ ! -f "${s}/VRisingServer.exe" ]; then
+    if [ -n "$SKIP_UPDATE" ] && [ ! -f "${s}/VRisingServer.exe" ]; then
+        echo "[entrypoint] SKIP_UPDATE is set but server files are missing. Forcing update..."
+    fi
     echo "[entrypoint] Updating V-Rising Dedicated Server files with steamcmd..."
     if ! (r=5; while ! /usr/bin/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "$s" +login anonymous +app_update 1829350 validate +quit ; do
               ((--r)) || exit
